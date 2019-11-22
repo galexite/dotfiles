@@ -1,9 +1,27 @@
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
- 
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
+
+" Use Vundle to manage plugins
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle update itself
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'SirVer/ultisnips'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'honza/vim-snippets'
+Plugin 'lifepillar/vim-solarized8'
+Plugin 'mileszs/ack.vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+call vundle#end()
  
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
@@ -90,6 +108,13 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
-colorscheme base16-tomorrow-night
+"------------------------------------------------------------
+" Plugin configuration
+
+set background=dark
+colorscheme solarized8
+
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
