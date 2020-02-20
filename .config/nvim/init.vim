@@ -60,7 +60,6 @@ Plug 'junegunn/fzf.vim'
 
 nnoremap <c-p> :FZF<cr>
 
-
 " Convert to snake, camel, dash, or dot case
 Plug 'tpope/vim-abolish'
 
@@ -73,9 +72,13 @@ Plug 'editorconfig/editorconfig-vim'
 " Neovim LSP common configurations
 Plug 'neovim/nvim-lsp'
 
+"
+" coc.nvim completion setup
+" Based on: https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f
+"
+
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -93,6 +96,24 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
