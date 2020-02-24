@@ -72,6 +72,9 @@ Plug 'editorconfig/editorconfig-vim'
 " Neovim LSP common configurations
 Plug 'neovim/nvim-lsp'
 
+" LaTeX editing tools
+Plug 'lervag/vimtex'
+
 "
 " coc.nvim completion setup
 " Based on: https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f
