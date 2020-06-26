@@ -25,9 +25,6 @@ Plug 'tpope/vim-fugitive'
 " Add file-management commands like :Delete, :Move, and :Rename
 Plug 'tpope/vim-eunuch'
 
-" Add parenthesis after autocompleted function
-Plug 'shougo/neopairs.vim'
-
 " Search with ripgrep (it is search tool agnostic)
 Plug 'mileszs/ack.vim'
 
@@ -36,9 +33,6 @@ Plug 'preservim/nerdtree'
 
 " Comment out code with ease in any language
 Plug 'preservim/nerdcommenter'
-
-" Lint / Check for syntax errors
-Plug 'w0rp/ale'
 
 " Change/delete surrounding quotes/brackets/tags
 Plug 'tpope/vim-surround'
@@ -68,9 +62,6 @@ Plug 'tpope/vim-sleuth'
 
 " Support editorconfig files (e.g. in PHP)
 Plug 'editorconfig/editorconfig-vim'
-
-" Neovim LSP common configurations
-Plug 'neovim/nvim-lsp'
 
 " LaTeX editing tools
 Plug 'lervag/vimtex'
