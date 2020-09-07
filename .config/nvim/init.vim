@@ -66,6 +66,8 @@ Plug 'editorconfig/editorconfig-vim'
 " LaTeX editing tools
 Plug 'lervag/vimtex'
 
+let g:tex_flavor = 'latex'
+
 "
 " coc.nvim completion setup
 " Based on: https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f
