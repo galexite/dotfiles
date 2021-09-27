@@ -44,7 +44,7 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-repeat'
 
 " Fuzzy search
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Fuzzy search configurations
 Plug 'junegunn/fzf.vim'
