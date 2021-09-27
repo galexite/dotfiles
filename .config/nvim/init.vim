@@ -107,9 +107,6 @@ set hlsearch
 set ignorecase
 set smartcase
  
-" Allow backspacing over autoindent, line breaks and start of insert action
-set backspace=indent,eol,start
- 
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
