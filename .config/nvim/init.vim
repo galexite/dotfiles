@@ -43,9 +43,6 @@ Plug 'wellle/targets.vim'
 " Repeat command works with external plugins
 Plug 'tpope/vim-repeat'
 
-" Assisted closing of HTML etc. tags
-Plug 'alvan/vim-closetag'
-
 " Fuzzy search
 Plug 'junegunn/fzf'
 
@@ -63,106 +60,10 @@ Plug 'tpope/vim-sleuth'
 " Support editorconfig files (e.g. in PHP)
 Plug 'editorconfig/editorconfig-vim'
 
-" LaTeX editing tools
-Plug 'lervag/vimtex'
-
-let g:tex_flavor = 'latex'
-
-"
-" coc.nvim completion setup
-" Based on: https://gist.github.com/benawad/b768f5a5bbd92c8baabd363b7e79786f
-"
-
-" Use release branch (Recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
 " Set up plugins
 call plug#end()
- 
-" Attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" and for plugins that are filetype specific.
-filetype indent plugin on
- 
-" Enable syntax highlighting
-syntax on
- 
- 
+
+
 "------------------------------------------------------------
 " Must have options {{{1
 "
@@ -189,20 +90,9 @@ set hidden
 " set confirm
 " set autowriteall
  
-" Better command-line completion
-set wildmenu
- 
-" Show partial commands in the last line of the screen
-set showcmd
- 
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
- 
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
  
  
 "------------------------------------------------------------
@@ -229,72 +119,49 @@ set autoindent
 " coming from other editors would expect.
 set nostartofline
  
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
- 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
  
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 set confirm
- 
-" Use visual bell instead of beeping when doing something wrong
-set visualbell
- 
-" And reset the terminal code for the visual bell. If visualbell is set, and
-" this line is also included, vim will neither flash nor beep. If visualbell
-" is unset, this does nothing.
-set t_vb=
- 
+
 " Enable use of the mouse for all modes
 set mouse=a
- 
+
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 "set cmdheight=2
- 
+
 " Display line numbers on the left
 set number
- 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
- 
-" Use <F11> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F11>
- 
- 
+
+
 "------------------------------------------------------------
 " Indentation options {{{1
 "
 " Indentation settings according to personal preference.
- 
+
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
 set softtabstop=4
 set expandtab
- 
-" Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
-"set shiftwidth=4
-"set tabstop=4
- 
- 
+
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
 " Useful mappings
- 
+
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
- 
+
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
- 
+
 "------------------------------------------------------------
 " Theming
 
