@@ -225,6 +225,7 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+
 "------------------------------------------------------------
 " Theming
 
@@ -235,3 +236,4 @@ end
 let base16colorspace=256  " Access colors present in 256 colorspace
 
 colorscheme base16-gruvbox-dark-pale
+
